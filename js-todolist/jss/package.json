@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "nodemon": "^3.1.7",
+    "undefined": "^0.1.0"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "devDependencies": {
+    "@babel/types": "^7.25.6"
+  }
+}

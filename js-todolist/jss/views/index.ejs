@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { margin: 20px auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; }
+        h1 { text-align: center; }
+        .center { text-align: center; }
+    </style>
+</head>
+<body>
+    <h1><%= pagename %></h1>
+    <a href="/">Index</a>
+    <a href="/home">Home</a>
+    
+    <div class="center">
+        <form action="/insertuser" method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="name" required></td> 
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type="number" name="phone" required></td> 
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Add User"></td> 
+                </tr>
+            </table>
+        </form>
+
+        <h2>Users</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Name</th>
+                    <th>Phone</th> 
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.map((u, i) => { %>
+                    <tr>
+                        <td><%= i + 1 %></td> 
+                        <td><%= u.name %></td>
+                        <td><%= u.phone %></td>                
+                        <td><a href="/edituser?id=<%= u.id %>">Edit</a></td>
+                        <td><a href="/deleteuser?deleteid=<%= u.id %>">Delete</a></td> 
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

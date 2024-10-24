@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book's details</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+</head>
+<style>
+    #insertion_section {
+        background: rgb(0, 0, 0);
+        border-radius: 7.5px;
+        padding: 15px 10px 15px 10px;
+        width: 100%;
+
+        .form-group {
+            width: 90%;
+            margin-left: 10%;
+
+            input,
+            label,
+            select {
+                width: 90%;
+            }
+
+            input,select {
+                opacity: .20;
+                transition: .5s;
+                outline: none;
+            }
+
+            button {
+                margin-left: -5%;
+            }
+
+        }
+
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+    }
+
+    #one-page {
+        height: 100vh;
+        background-image: url("https://png.pngtree.com/background/20211215/original/pngtree-the-background-photography-of-the-empty-library-bookstore-indoors-picture-image_1474812.jpg");
+        background-size: auto;
+        
+
+    }
+
+    .container {
+        position: relative;
+        top: 15%;
+        left: 15%;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    @media (max-width: 976px) {
+        #one-page {
+            height: 150%;
+            background-image: url("https://png.pngtree.com/background/20211215/original/pngtree-the-background-photography-of-the-empty-library-bookstore-indoors-picture-image_1474812.jpg");
+            background-size: auto;
+            -webkit-background-size: auto;
+            -moz-background-size: auto;
+            -o-background-size: auto;
+        }
+    }
+</style>
+
+<body>
+
+    <section id="one-page">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-light">DETAILS OF BOOKS</h1>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-lg-5" id="insertion_section">
+                    <form action="/insertBook" method="post" class="form-group justify-content-center">
+                        <div class="row" id="name-section">
+                            <label class="text-light">BookName</label>
+                            <input class="form-control" name="name" id="bookName">
+                        </div>
+                        <div class="row" id="author-section">
+                            <label class="text-light">Price</label>
+                            <input class="form-control" name="price" id="authorName">
+                        </div>
+                        <div class="row" id="publisher-section">
+                            <label class="text-light">Pages</label>
+                            <select name="pages" id="authorName">
+                                <option class="text-light">---Select Pages---</option>
+                                <% const pages=["100","150","200","300","350","400","500 +"]; pages.map((page)=>{
+                                    %>
+                                    <option value="<%= page %>">
+                                        <%= page %>
+                                    </option>
+
+                                    <% }) %>
+                            </select>
+                        </div>
+                        <div class="row" id="publisher-section">
+                            <label class="text-light">BookAuthor</label>
+                            <input name="author" class="form-control" id="publisherName">
+                        </div>
+                        <div class="add-button mt-4">
+                            <button type="submit" class="btn btn-danger btn-block" id="add">ADD</button>
+                        </div>
+                    </form>
+                    <a href="/view" class="btn btn-info m-4" id="add">VIEW</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    $(document).ready(function () {
+        $("input").focus(function () {
+            $(this).css("opacity", 1)
+        })
+        $("input").blur(function () {
+            $(this).css("opacity", .2)
+        })
+        $(".close").click(function () {
+            $(this).parents(".tab").hide(500)
+        })
+    })
+</script>
+
+</html>
